@@ -3,7 +3,7 @@ $paged = ( get_query_var( 'paged' ) ) ? get_query_var( 'paged' ) : 1;
 ?>
     <section class="blog-sec">
         <div class="container">
-            <h1 class="section-title blog__title"><span>Blog</span> Billy </h1>
+            <h1 class="other-page__title section-title"><span>Blog</span> Billy </h1>
             <?php
             $i = 0;
             // The Query

@@ -40,6 +40,9 @@
                     </ul>
                 </nav>
                 <a href="#" class="btn header__btn">Book Billy</a>
+                <button class="header__menu-btn">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </header>
         <main class="main">

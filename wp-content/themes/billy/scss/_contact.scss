@@ -1,0 +1,136 @@
+.contact {
+    &-sec {
+        padding-top: 140px;
+        padding-bottom: 135px;
+        @media (max-width: 1099px) {
+            padding-bottom: 75px;
+        }
+        @media (max-width: 768px) {
+            padding-top: 100px;
+            padding-bottom: 45px;
+        }
+    }
+    &__title {
+        margin-bottom: 36px;
+    }
+    &__cols {
+        display: flex;
+        @media (max-width: 992px) {
+            display: block;
+        }
+    }
+    &__form {
+        flex: 0 0 565px;
+        form {
+            display: block;
+            width: 100%;
+            & > p {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 25px;
+                @media (max-width: 992px) {
+                    gap: 15px;
+                }
+                &:last-of-type {
+                    flex-direction: column;
+                    align-items: center;
+                }
+            }
+        }
+        .wpcf7-form-control-wrap {
+            width: calc(50% - 12.5px);
+            @media (max-width: 992px) {
+                width: calc(50% - 7.5px);
+            }
+            @media (max-width: 576px) {
+                width: 100%;
+            }
+        }
+        .wpcf7-not-valid-tip {
+            font-size: 12px;
+            margin-top: 5px;
+            padding-left: 3px;
+        }
+        br {
+            display: none;
+        }
+        [data-name="obstacle"],
+        [data-name="do-living"],
+        [data-name="invest"] {
+            width: 100%;
+        }
+
+        input:not([type="submit"]),
+        textarea {
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(50px);
+            border-radius: 2px;
+            border: 1px solid;
+            width: 100%;
+            padding: 17px 19px;
+            outline: none;
+            font-family: "Gilroy";
+            font-weight: 400;
+            font-size: 17px;
+            color: #ffffff;
+            border-image-source: linear-gradient(
+                90.03deg,
+                rgba(255, 255, 255, 0.43) -99.93%,
+                rgba(255, 255, 255, 0.01) 46.87%,
+                rgba(255, 255, 255, 0.15) 99.97%
+            );
+            &::placeholder {
+                font-family: "Gilroy";
+                font-weight: 400;
+                font-size: 17px;
+                color: #ffffff;
+            }
+        }
+        textarea {
+            resize: none;
+            height: 113px;
+        }
+        input[type="submit"] {
+            text-align: center;
+            display: inline-block;
+            min-width: 170px;
+            background: #b70e0e;
+            color: #fff;
+            font-weight: 500;
+            border-radius: 2px;
+            border-bottom-left-radius: 14px;
+            border-top-right-radius: 14px;
+            padding: 11px 46px;
+            font-family: "Gilroy";
+            color: #fff;
+            font-size: 17px;
+            text-transform: capitalize;
+            transition: background 0.3s;
+            border: none;
+            margin-top: 45px;
+            &:hover {
+                background: darken(#b70e0e, 10%);
+            }
+        }
+    }
+    &__left {
+        padding-right: 116px;
+        @media (max-width: 1099px) {
+            padding-right: 45px;
+        }
+        @media (max-width: 992px) {
+            margin-bottom: 15px;
+            padding-right: 0;
+        }
+        @media (max-width: 576px) {
+            text-align: center;
+            .footer__socials {
+                justify-content: center;
+            }
+            .footer__link {
+                justify-content: center;
+            }
+        }
+    }
+}

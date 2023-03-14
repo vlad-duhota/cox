@@ -1,5 +1,6 @@
 .single,
-.blog {
+.blog,
+.page-template-contact-page-php {
     background: url(../img/cards-bg.png) center / cover no-repeat;
     background-color: #0d0d0d;
     .wrapper {
@@ -9,20 +10,27 @@
     }
 }
 
-.blog {
-    &__title {
-        font-size: 52px;
-        text-align: center;
-        padding-bottom: 46px;
-        border-bottom: 1px solid rgba($color: #fff, $alpha: 0.24);
-        margin-bottom: 33px;
+.other-page__title {
+    font-size: 52px;
+    text-align: center;
+    padding-bottom: 46px;
+    border-bottom: 1px solid rgba($color: #fff, $alpha: 0.24);
+    margin-bottom: 33px;
+    @media (max-width: 768px) {
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+        font-size: 34px;
     }
+}
+
+.blog {
     &-sec {
         padding: 138px 0 164px;
         @media (max-width: 1099px) {
             padding-bottom: 75px;
         }
         @media (max-width: 768px) {
+            padding-top: 100px;
             padding-bottom: 45px;
         }
     }
