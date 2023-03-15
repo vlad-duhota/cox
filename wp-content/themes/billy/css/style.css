@@ -1294,6 +1294,15 @@ body {
   position: relative;
   z-index: 5;
 }
+.podcast .iti--container {
+  left: unset !important;
+  top: unset !important;
+  bottom: 30px !important;
+  right: 30px !important;
+  z-index: 1000;
+  width: 300px !important;
+  height: 400px !important;
+}
 .podcast textarea {
   background: rgba(255, 255, 255, 0.06);
   box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
