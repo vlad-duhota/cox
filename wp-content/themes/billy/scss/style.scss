@@ -1118,6 +1118,10 @@ body {
     [data-name="your-story"] {
         width: 100%;
     }
+    .iti--allow-dropdown {
+        position: relative;
+        z-index: 5;
+    }
     textarea {
         background: rgba(255, 255, 255, 0.06);
         box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
