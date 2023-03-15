@@ -15,6 +15,7 @@
     }
     &__cols {
         display: flex;
+        justify-content: center;
         @media (max-width: 992px) {
             display: block;
         }
@@ -116,8 +117,10 @@
     }
     &__left {
         padding-right: 116px;
+        flex: 0 0 518px;
         @media (max-width: 1099px) {
             padding-right: 45px;
+            flex: 1 1 auto;
         }
         @media (max-width: 992px) {
             margin-bottom: 15px;
