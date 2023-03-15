@@ -23,9 +23,8 @@
             </section>
             <section class="about" id="about">
                 <div class="container">
-                    <a target="_blank" class="about__img" href="<?php echo carbon_get_post_meta($pageId, 'about_video_url')?>">
-                    <?php $aboutPreview = carbon_get_post_meta($pageId, 'about_video')?>
-                    <?php echo wp_get_attachment_image($aboutPreview, 'full')?>
+                    <a target="_blank" class="about__img" >
+                    <iframe width="560" height="315" src="<?php echo str_replace('?v=', '/', str_replace('watch', 'embed', carbon_get_post_meta($pageId, 'about_video_url')))?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_b_161_2807)">
                                 <rect width="60" height="60" rx="30" fill="white" fill-opacity="0.21" />
@@ -104,9 +103,8 @@
                         </ul>
                         <a href="#training" class="btn dark"><?php echo carbon_get_post_meta($pageId, 'study_btn')?></a>
                     </div>
-                    <a href="<?php echo carbon_get_post_meta($pageId, 'study_video_url')?>" target="_blank" class="study__img">
-                    <?php $aboutPreview = carbon_get_post_meta($pageId, 'study_video')?>
-                        <img src="<?php echo get_template_directory_uri()?>/img/study.jpg">
+                    <a target="_blank" class="study__img">
+                        <iframe width="560" height="315" src="<?php echo str_replace('?v=', '/', str_replace('watch', 'embed', carbon_get_post_meta($pageId, 'study_video_url')))?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_b_161_2807)">
                                 <rect width="60" height="60" rx="30" fill="white" fill-opacity="0.21" />
@@ -189,9 +187,8 @@
             </section>
             <section class="about about_2">
             <div class="container">
-                    <a target="_blank" class="about__img" href="<?php echo carbon_get_post_meta($pageId, 'training_video_url')?>">
-                    <?php $trainingPreview = carbon_get_post_meta($pageId, 'training_video')?>
-                    <?php echo wp_get_attachment_image($trainingPreview, 'full')?>
+                    <a target="_blank" class="about__img">
+                    <iframe width="560" height="315" src="<?php echo str_replace('?v=', '/', str_replace('watch', 'embed', carbon_get_post_meta($pageId, 'training_video_url')))?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_b_161_2807)">
                                 <rect width="60" height="60" rx="30" fill="white" fill-opacity="0.21" />
@@ -261,9 +258,8 @@
             <div class="container">
                     <p class="about__uptitle"><?php echo carbon_get_post_meta($pageId, 'facebook_uptitle')?></p>
                     <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'facebook_title')?></h2>
-                    <a target="_blank" class="about__img" href="<?php echo carbon_get_post_meta($pageId, 'facebook_video_url')?>">
-                    <?php $facebookPreview = carbon_get_post_meta($pageId, 'facebook_video')?>
-                    <?php echo wp_get_attachment_image($facebookPreview, 'full')?>
+                    <a target="_blank" class="about__img">
+                    <iframe width="560" height="315" src="<?php echo str_replace('?v=', '/', str_replace('watch', 'embed', carbon_get_post_meta($pageId, 'facebook_video_url')))?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_b_161_2807)">
                                 <rect width="60" height="60" rx="30" fill="white" fill-opacity="0.21" />
@@ -310,9 +306,8 @@
             <div class="container">
                     <p class="about__uptitle"><?php echo carbon_get_post_meta($pageId, 'podcast_uptitle')?></p>
                     <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'podcast_title')?></h2>
-                    <a target="_blank" class="about__img" href="<?php echo carbon_get_post_meta($pageId, 'facebook_video_url')?>">
-                    <?php $podcastPreview = carbon_get_post_meta($pageId, 'podcast_video')?>
-                    <?php echo wp_get_attachment_image($podcastPreview, 'full')?>
+                    <a target="_blank" class="about__img">
+                    <iframe width="560" height="315" src="<?php echo str_replace('?v=', '/', str_replace('watch', 'embed', carbon_get_post_meta($pageId, 'podcast_video_url')))?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_b_161_2807)">
                                 <rect width="60" height="60" rx="30" fill="white" fill-opacity="0.21" />
@@ -383,9 +378,8 @@
                     <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'youtube_title')?></h2>
                     <div class="youtube__list">
                         <?php foreach(carbon_get_post_meta($pageId, 'youtube_list') as $youtubeItem) : ?>
-                        <a class="youtube__item" href="<?php echo $youtubeItem['youtube_url']?>" target="_blank">
-                            <?php $youtubeImg = $youtubeItem['youtube_img']?>
-                            <?php echo wp_get_attachment_image($youtubeImg, 'full', [], ["class" => "youtube__item-img"])?>
+                        <a class="youtube__item">
+                        <iframe width="560" height="315" src="<?php echo str_replace('?v=', '/', str_replace('watch', 'embed', $youtubeItem['youtube_url']))?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                             <svg width="37" height="37" viewBox="0 0 37 37" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g filter="url(#filter0_b_161_2669)">

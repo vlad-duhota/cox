@@ -30,7 +30,6 @@ Container::make('post meta', 'Front Page')
 ->add_tab( __('About'), array(
    Field::make( 'text', 'about_title', 'Title' ) 
    ->set_help_text( 'Text in span - red text' ),
-   Field::make( 'image', 'about_video', 'Video Preview' ), 
    Field::make( 'text', 'about_video_url', 'Video Link' ), 
    Field::make( 'text', 'about_uptitle', 'Uptitle' ), 
    Field::make( 'text', 'about_text_1', 'Text 1' ), 
@@ -52,7 +51,6 @@ Container::make('post meta', 'Front Page')
 ->add_tab( __('M V M T School'), array(
    Field::make( 'text', 'stduy_uptitle', 'Uptitle' ), 
    Field::make( 'text', 'study_title', 'Title' ),
-   Field::make( 'image', 'study_video', 'Video Preview' ), 
    Field::make( 'text', 'study_video_url', 'Video Link' ), 
    Field::make( 'text', 'study_text_1', 'Text 1' ), 
    Field::make( 'text', 'study_text_2', 'Text 2' ), 
@@ -109,7 +107,6 @@ Container::make('post meta', 'Front Page')
 ->add_tab( __('Training System'), array(
    Field::make( 'text', 'training_title', 'Title' ) 
    ->set_help_text( 'Text in span - red text' ),
-   Field::make( 'image', 'training_video', 'Video Preview' ), 
    Field::make( 'text', 'training_video_url', 'Video Link' ), 
    Field::make( 'text', 'training_uptitle', 'Uptitle' ), 
    Field::make( 'text', 'training_text_1', 'Text 1' ), 
@@ -128,7 +125,6 @@ Container::make('post meta', 'Front Page')
 ->add_tab( __('Follow My Facebook'), array(
    Field::make( 'text', 'facebook_uptitle', 'Uptitle' ), 
    Field::make( 'text', 'facebook_title', 'Title' ), 
-   Field::make( 'image', 'facebook_video', 'Video Preview' ), 
    Field::make( 'text', 'facebook_video_url', 'Video Link' ), 
    Field::make( 'text', 'facebook_text_1', 'Text 1' ), 
    Field::make( 'text', 'facebook_text_2', 'Text 2' ), 
@@ -138,7 +134,6 @@ Container::make('post meta', 'Front Page')
 ->add_tab( __('Dropping Bombs Podcast'), array(
    Field::make( 'text', 'podcast_uptitle', 'Uptitle' ), 
    Field::make( 'text', 'podcast_title', 'Title' ), 
-   Field::make( 'image', 'podcast_video', 'Video Preview' ), 
    Field::make( 'text', 'podcast_video_url', 'Video Link' ), 
    Field::make( 'text', 'podcast_text_1', 'Text 1' ), 
    Field::make( 'text', 'podcast_text_2', 'Text 2' ), 
@@ -160,7 +155,6 @@ Container::make('post meta', 'Front Page')
    ->set_max(4)
    ->add_fields( array(
       Field::make( 'text', 'youtube_url', 'Video link' ),
-      Field::make( 'image', 'youtube_img', 'Video preview' ),
    ) )
 ) )
 ->add_tab( __('Be On My Podcast'), array(
