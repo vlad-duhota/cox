@@ -2,33 +2,30 @@
 
 <?php get_header(); ?>
 <?php $pageId = get_the_ID() ?>
-
-            <section class="hero">
-                <video class="hero__img" src="<?php echo get_template_directory_uri()?>/img/hero.mp4" autoplay muted></video>
-                <div class="container">
-                    <form class="hero__form">
-                        <input type="email" placeholder="Enter your email address">
-                        <button class="btn" type="submit">Jump on my list</button>
-                    </form>
-                    <p class="hero__text">I don't spam or sell your information. I do send you cool shit from time to
-                        time.</p>
+<section class="hero">
+    <?php $bg = carbon_get_post_meta($pageId, 'hero_video')[0]?>
+    <video class="hero__img" src="<?php echo wp_get_attachment_url($bg, 'full')?>" autoplay muted></video>
+    <div class="container">
+                <?php echo do_shortcode('[contact-form-7 id="64" title="Hero form"]')?>
+                    <p class="hero__text"><?php echo carbon_get_post_meta($pageId, 'hero_text')?></p>
                 </div>
             </section>
             <section class="make-money" id="money">
-                <h2 class="section-title center">Make Money With Me</h2>
+                <h2 class="section-title center"><?php echo carbon_get_post_meta($pageId, 'make_title')?></h2>
                 <div class="container">
                     <div class="make-money__btns">
-                        <a href="#school" class="btn">New the M V M T</a>
-                        <a href="#training" class="btn">speaking and training</a>
-                        <a href="#podcasts" class="btn">podcasts</a>
-                        <a href="#reviews" class="btn">product and reviews</a>
+                        <a href="#school" class="btn"><?php echo carbon_get_post_meta($pageId, 'make_btn_1')?></a>
+                        <a href="#training" class="btn"><?php echo carbon_get_post_meta($pageId, 'make_btn_2')?></a>
+                        <a href="#podcasts" class="btn"><?php echo carbon_get_post_meta($pageId, 'make_btn_3')?></a>
+                        <a href="#reviews" class="btn"><?php echo carbon_get_post_meta($pageId, 'make_btn_4')?></a>
                     </div>
                 </div>
             </section>
             <section class="about" id="about">
                 <div class="container">
-                    <a class="about__img">
-                        <img src="<?php echo get_template_directory_uri()?>/img/about.jpg">
+                    <a target="_blank" class="about__img" href="<?php echo carbon_get_post_meta($pageId, 'about_video_url')?>">
+                    <?php $aboutPreview = carbon_get_post_meta($pageId, 'about_video')?>
+                    <?php echo wp_get_attachment_image($aboutPreview, 'full')?>
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_b_161_2807)">
                                 <rect width="60" height="60" rx="30" fill="white" fill-opacity="0.21" />
@@ -57,20 +54,14 @@
                         </svg>
                     </a>
                     <div class="about__right">
-                        <p class="about__uptitle">about Billy Cox</p>
-                        <h2 class="section-title">Story <span>about me</span></h2>
+                        <p class="about__uptitle"><?php echo carbon_get_post_meta($pageId, 'about_uptitle')?></p>
+                        <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'about_title')?></h2>
                         <div class="text">
                             <p>
-                                Billy Cox, best selling author, Dallas based Keynote speaker, and sales trainer has a
-                                proven track record of providing real world answers. Billy will inform, challenge and
-                                inspire your audience just as he does for many of the most successful companies in the
-                                world. Billy Cox has a message that is pure, refreshing and energizing.
+                                <?php echo carbon_get_post_meta($pageId, 'about_text_1')?>
                             </p>
                             <p>
-                                His down to earth speaking style is very unique and helps him gain instant rapport with
-                                any audience. Billy’s real life experiences in Sales, Teamwork, Leadership and Life
-                                skills are priceless. “The Best Keynote Speaker and Trainer We’ve Ever Had” This is the
-                                type of feedback Billy consistently receives.
+                                <?php echo carbon_get_post_meta($pageId, 'about_text_2')?>
                             </p>
                         </div>
                     </div>
@@ -78,64 +69,43 @@
             </section>
             <section class="logos">
                 <div class="container">
-                    <a href="#" class="logos__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/logo_1.svg">
-                    </a>
-                    <a href="#" class="logos__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/logo_2.svg">
-                    </a>
-                    <a href="#" class="logos__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/logo_3.svg">
-                    </a>
-                    <a href="#" class="logos__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/logo_4.svg">
-                    </a>
-                    <a href="#" class="logos__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/logo_5.svg">
-                    </a>
+                    <?php foreach(carbon_get_post_meta($pageId, 'logos_list') as $logo) : ?>
+                        <a href="<?php echo $logo['logos_url']?>" class="logos__item">
+                            <?php $logoImg = $logo['logos_img']?>
+                            <?php echo wp_get_attachment_image($logoImg, 'full')?>
+                        </a>
+                    <?php endforeach;?>
                 </div>
             </section>
             <section class="banner banner_1">
-                <video src="<?php echo get_template_directory_uri()?>/img/banner_1.mp4" class="banner__video" autoplay muted></video>
+            <?php $bannerBg_1 = carbon_get_post_meta($pageId, 'banner_1_video')[0]?>
+                <video src="<?php echo wp_get_attachment_url($bannerBg_1, 'full')?>" class="banner__video" autoplay muted></video>
                 <div class="container">
-                    <a href="#" class="btn">Request a Meeting With</a>
+                    <a href="#training" class="btn"><?php echo carbon_get_post_meta($pageId, 'banner_1_text')?></a>
                 </div>
             </section>
             <section class="study" id="school">
                 <div class="container">
                     <div class="study__left">
-                        <p class="study__uptitle">Study with me</p>
-                        <h2 class="section-title white">M V M T School</h2>
+                        <p class="study__uptitle"> <?php echo carbon_get_post_meta($pageId, 'study_uptitle')?></p>
+                        <h2 class="section-title white"><?php echo carbon_get_post_meta($pageId, 'study_title')?></h2>
                         <div class="text">
                             <p>
-                                Billy Cox, best selling author, Dallas based Keynote speaker, and sales trainer has a
-                                proven track record of providing real world answers. Billy will inform, challenge and
-                                inspire your audience just as he does for many of the most successful companies in the
-                                world. Billy Cox has a message that is pure, refreshing and energizing.
+                                <?php echo carbon_get_post_meta($pageId, 'study_text_1')?>
                             </p>
                             <p>
-                                His down to earth speaking style is very unique and helps him gain instant rapport with
-                                any audience. Billy’s real life experiences in Sales, Teamwork, Leadership and Life
-                                skills are priceless.“The Best Keynote Speaker and Trainer We’ve Ever Had” This is the
-                                type of feedback Billy consistently receives.
+                                <?php echo carbon_get_post_meta($pageId, 'study_text_2')?>
                             </p>
                         </div>
                         <ul class="study__list">
-                            <li class="study__item">Mindset</li>
-                            <li class="study__item">Social Media</li>
-                            <li class="study__item">Confidence</li>
-                            <li class="study__item">Networking</li>
-                            <li class="study__item">Sales</li>
-                            <li class="study__item">Marketing</li>
-                            <li class="study__item">Closing</li>
-                            <li class="study__item">Personal Branding</li>
-                            <li class="study__item">Persuasion</li>
-                            <li class="study__item">Building Relationships</li>
-                            <li class="study__item">Influence</li>
+                            <?php foreach(carbon_get_post_meta($pageId, 'study_list') as $studyItem) : ?>
+                                <li class="study__item"><?php echo $studyItem['study_item']?></li> 
+                            <?php endforeach;?>
                         </ul>
-                        <a href="#" class="btn dark">Jump Now</a>
+                        <a href="#training" class="btn dark"><?php echo carbon_get_post_meta($pageId, 'study_btn')?></a>
                     </div>
-                    <a href="#" class="study__img">
+                    <a href="<?php echo carbon_get_post_meta($pageId, 'study_video_url')?>" target="_blank" class="study__img">
+                    <?php $aboutPreview = carbon_get_post_meta($pageId, 'study_video')?>
                         <img src="<?php echo get_template_directory_uri()?>/img/study.jpg">
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_b_161_2807)">
@@ -167,57 +137,61 @@
                 </div>
             </section>
             <section class="banner banner_2">
-                <video src="<?php echo get_template_directory_uri()?>/img/banner_1.mp4" class="banner__video" autoplay muted></video>
+                <?php $bannerBg_2 = carbon_get_post_meta($pageId, 'banner_2_video')[0]?>
+                <video src="<?php echo wp_get_attachment_url($bannerBg_2, 'full')?>" class="banner__video" autoplay muted></video>
                 <div class="container">
-                    <img src="<?php echo get_template_directory_uri()?>/img/banner_2.png">
+                    <?php $custom_logo_id = get_theme_mod( 'custom_logo' ); ?>
+                    <?php echo wp_get_attachment_image( $custom_logo_id, 'full' ); ?>
                 </div>
             </section>
             <section class="cards" id="training">
                 <div class="container">
-                    <p class="cards__uptitle">THE ART OF SALES</p>
-                    <h2 class="section-title">speaking and training</h2>
+                    <p class="cards__uptitle"><?php echo carbon_get_post_meta($pageId, 'sat_uptitle')?></p>
+                    <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'sat_title')?></h2>
                     <div class="cards__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/cards_1.jpg" class="cards__img">
+                        <?php $cardImg_1 =  carbon_get_post_meta($pageId, 'sat_img_1')?>
+                        <?php echo wp_get_attachment_image($cardImg_1, 'full', [], ["class" => "cards__img"])?>
                         <div class="cards__item-right">
-                            <h3 class="cards__item-title">Book Billy</h3>
+                            <h3 class="cards__item-title"><?php echo carbon_get_post_meta($pageId, 'sat_title_1')?></h3>
                             <p class="cards__item-text">
-                                Quickly create and scale a world-class interactive training system based on your brand
-                                and expertise.
+                                <?php echo carbon_get_post_meta($pageId, 'sat_text_1')?>
                             </p>
-                            <a href="#" class="btn">Book</a>
+                            <a href="<?php echo get_home_url()?>/<?php echo carbon_get_post_meta($pageId, 'sat_btn_url_1')?>" class="btn"><?php echo carbon_get_post_meta($pageId, 'sat_btn_1')?></a>
                         </div>
                     </div>
                     <div class="cards__item reverse">
-                        <img src="<?php echo get_template_directory_uri()?>/img/cards_2.jpg" class="cards__img">
+                        <?php $cardImg_2 =  carbon_get_post_meta($pageId, 'sat_img_2')?>
+                        <?php echo wp_get_attachment_image($cardImg_2, 'full', [], ["class" => "cards__img"])?>
                         <div class="cards__item-right">
-                            <h3 class="cards__item-title">consult with me</h3>
+                            <h3 class="cards__item-title"><?php echo carbon_get_post_meta($pageId, 'sat_title_2')?></h3>
                             <p class="cards__item-text">
-                                Become a Distributor or Rep of LightSpeed VT. Make residual commissions and network with
-                                the best in the business.
+                                <?php echo carbon_get_post_meta($pageId, 'sat_text_2')?>
                             </p>
-                            <a href="#" class="btn">Sign Up Now</a>
+                            <a href="<?php echo get_home_url()?>/<?php echo carbon_get_post_meta($pageId, 'sat_btn_url_2')?>" class="btn"><?php echo carbon_get_post_meta($pageId, 'sat_btn_2')?></a>
                         </div>
                     </div>
                     <div class="cards__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/cards_3.jpg" class="cards__img">
+                        <?php $cardImg_3 =  carbon_get_post_meta($pageId, 'sat_img_3')?>
+                        <?php echo wp_get_attachment_image($cardImg_3, 'full', [], ["class" => "cards__img"])?>
                         <div class="cards__item-right">
-                            <h3 class="cards__item-title">breakout</h3>
+                            <h3 class="cards__item-title"><?php echo carbon_get_post_meta($pageId, 'sat_title_3')?></h3>
                             <p class="cards__item-text">
-                                Get hired at one of my companies. Must have the desire to make at least $250K per year.
-                                Must be willing to train, learn and develop into a bad-ass.
+                                <?php echo carbon_get_post_meta($pageId, 'sat_text_3')?>
                             </p>
-                            <a href="#" class="btn">Let’s get to Work</a>
+                            <a href="<?php echo get_home_url()?>/<?php echo carbon_get_post_meta($pageId, 'sat_btn_url_3')?>" class="btn"><?php echo carbon_get_post_meta($pageId, 'sat_btn_3')?></a>
                         </div>
                     </div>
                 </div>
             </section>
             <section class="banner">
-                <video src="<?php echo get_template_directory_uri()?>/img/banner_1.mp4" class="banner__video" autoplay muted></video>
+                <?php $bannerBg_3 = carbon_get_post_meta($pageId, 'banner_3_video')[0]?>
+                <video src="<?php echo wp_get_attachment_url($bannerBg_3, 'full')?>" class="banner__video" autoplay muted></video>
             </section>
             <section class="about about_2">
-                <div class="container">
-                    <a class="about__img">
-                        <img src="<?php echo get_template_directory_uri()?>/img/about.jpg">
+            <div class="container">
+                    <a target="_blank" class="about__img" href="<?php echo carbon_get_post_meta($pageId, 'training_video_url')?>">
+                    <?php $trainingPreview = carbon_get_post_meta($pageId, 'training_video')?>
+                    <?php echo wp_get_attachment_image($trainingPreview, 'full')?>
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_b_161_2807)">
                                 <rect width="60" height="60" rx="30" fill="white" fill-opacity="0.21" />
@@ -246,61 +220,50 @@
                         </svg>
                     </a>
                     <div class="about__right">
-                        <p class="about__uptitle">training system</p>
-                        <h2 class="section-title">join the most <span>powerful network</span>
-                            in existence</h2>
+                        <p class="about__uptitle"><?php echo carbon_get_post_meta($pageId, 'training_uptitle')?></p>
+                        <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'training_title')?></h2>
                         <div class="text">
                             <p>
-                                Billy Cox, best selling author, Dallas based Keynote speaker, and sales trainer has a
-                                proven track record of providing real world answers. Billy will inform, challenge and
-                                inspire your audience just as he does for many of the most successful companies in the
-                                world. Billy Cox has a message that is pure, refreshing and energizing.
+                                <?php echo carbon_get_post_meta($pageId, 'training_text_1')?>
                             </p>
                             <p>
-                                His down to earth speaking style is very unique and helps him gain instant rapport.
+                                <?php echo carbon_get_post_meta($pageId, 'training_text_2')?>
                             </p>
                         </div>
-                        <a href="#" class="btn">join</a>
+                        <a href="#training" class="btn"> <?php echo carbon_get_post_meta($pageId, 'training_btn')?></a>
                     </div>
                 </div>
             </section>
             <section class="logos logos_2">
-                <h2>A few of my friends, clients and partners:</h2>
+                <h2><?php echo carbon_get_post_meta($pageId, 'logos_title')?></h2>
                 <div class="container">
-                    <a href="#" class="logos__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/logo-2_1.svg">
-                    </a>
-                    <a href="#" class="logos__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/logo-2_2.svg">
-                    </a>
-                    <a href="#" class="logos__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/logo-2_3.svg">
-                    </a>
-                    <a href="#" class="logos__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/logo-2_4.svg">
-                    </a>
-                    <a href="#" class="logos__item">
-                        <img src="<?php echo get_template_directory_uri()?>/img/logo-2_5.svg">
-                    </a>
+                    <?php foreach(carbon_get_post_meta($pageId, 'logos_list_2') as $logo) : ?>
+                        <a href="<?php echo $logo['logos_url']?>" class="logos__item">
+                            <?php $logoImg = $logo['logos_img']?>
+                            <?php echo wp_get_attachment_image($logoImg, 'full')?>
+                        </a>
+                    <?php endforeach;?>
                 </div>
             </section>
             <section class="article" id="reviews">
-                <img src="<?php echo get_template_directory_uri()?>/img/article.jpg" class="article__img">
+                <?php $articleBg = carbon_get_post_meta($pageId, 'article_bg')?>
+                <?php echo wp_get_attachment_image($articleBg, 'full', [], ["class" => "article__img"])?>
                 <div class="container">
-                    <h2>“One of the best business decisions I’ve ever made was doing business with Brad Lea. My only
-                        regret is that I should have done it sooner.”</h2>
-                    <p class="article__author">Grant Cardone | Cardone Capital</p>
+                    <h2><?php echo carbon_get_post_meta($pageId, 'article_title')?></h2>
+                    <p class="article__author"><?php echo carbon_get_post_meta($pageId, 'article_author')?></p>
                 </div>
             </section>
             <section class="banner">
-                <video src="<?php echo get_template_directory_uri()?>/img/banner_1.mp4" class="banner__video" autoplay muted></video>
+                <?php $bannerBg_4 = carbon_get_post_meta($pageId, 'banner_4_video')[0]?>
+                <video src="<?php echo wp_get_attachment_url($bannerBg_4, 'full')?>" class="banner__video" autoplay muted></video>
             </section>
             <section class="about about-dif">
-                <div class="container">
-                    <p class="about__uptitle">training system</p>
-                    <h2 class="section-title">Follow my <span>Facebook</span></h2>
-                    <a class="about__img">
-                        <img src="<?php echo get_template_directory_uri()?>/img/about.jpg">
+            <div class="container">
+                    <p class="about__uptitle"><?php echo carbon_get_post_meta($pageId, 'facebook_uptitle')?></p>
+                    <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'facebook_title')?></h2>
+                    <a target="_blank" class="about__img" href="<?php echo carbon_get_post_meta($pageId, 'facebook_video_url')?>">
+                    <?php $facebookPreview = carbon_get_post_meta($pageId, 'facebook_video')?>
+                    <?php echo wp_get_attachment_image($facebookPreview, 'full')?>
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_b_161_2807)">
                                 <rect width="60" height="60" rx="30" fill="white" fill-opacity="0.21" />
@@ -329,28 +292,27 @@
                         </svg>
                     </a>
                     <div class="about__right">
-                        <img src="<?php echo get_template_directory_uri()?>/img/banner_2.png">
+                        <?php $custom_logo_id = get_theme_mod( 'custom_logo' ); ?>
+                        <?php echo wp_get_attachment_image( $custom_logo_id, 'full' ); ?>
                         <div class="text">
                             <p>
-                                Billy Cox, best selling author, Dallas based Keynote speaker, and sales trainer has a
-                                proven track record of providing real world answers. Billy will inform, challenge and
-                                inspire your audience just as he does for
+                                <?php echo carbon_get_post_meta($pageId, 'facebook_text_1')?>
                             </p>
                             <p>
-                                many of the most successful companies in the
-                                world. Billy Cox has a message that is pure, refreshing and energizing.
+                                <?php echo carbon_get_post_meta($pageId, 'facebook_text_2')?>
                             </p>
                         </div>
-                        <a href="#" class="btn">Join our 1.5k community</a>
+                        <a href="<?php echo carbon_get_post_meta($pageId, 'facebook_btn_url')?>" class="btn"><?php echo carbon_get_post_meta($pageId, 'facebook_btn')?></a>
                     </div>
                 </div>
             </section>
             <section class="about about-dif">
-                <div class="container">
-                    <p class="about__uptitle">My podcasts</p>
-                    <h2 class="section-title">Dropping Bombs <span>Podcast</span></h2>
-                    <a class="about__img">
-                        <img src="<?php echo get_template_directory_uri()?>/img/about.jpg">
+            <div class="container">
+                    <p class="about__uptitle"><?php echo carbon_get_post_meta($pageId, 'podcast_uptitle')?></p>
+                    <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'podcast_title')?></h2>
+                    <a target="_blank" class="about__img" href="<?php echo carbon_get_post_meta($pageId, 'facebook_video_url')?>">
+                    <?php $podcastPreview = carbon_get_post_meta($pageId, 'podcast_video')?>
+                    <?php echo wp_get_attachment_image($podcastPreview, 'full')?>
                         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <g filter="url(#filter0_b_161_2807)">
                                 <rect width="60" height="60" rx="30" fill="white" fill-opacity="0.21" />
@@ -379,72 +341,51 @@
                         </svg>
                     </a>
                     <div class="about__right">
-                        <img src="<?php echo get_template_directory_uri()?>/img/banner_2.png">
+                        <?php $custom_logo_id = get_theme_mod( 'custom_logo' ); ?>
+                        <?php echo wp_get_attachment_image( $custom_logo_id, 'full' ); ?>
                         <div class="text">
                             <p>
-                                Billy Cox, best selling author, Dallas based Keynote speaker, and sales trainer has a
-                                proven track record of providing real world answers. Billy will inform, challenge and
-                                inspire your audience just as he does for
+                                <?php echo carbon_get_post_meta($pageId, 'podcast_text_1')?>
                             </p>
                             <p>
-                                many of the most successful companies in the
-                                world. Billy Cox has a message that is pure, refreshing and energizing.
+                                <?php echo carbon_get_post_meta($pageId, 'podcast_text_2')?>
                             </p>
                         </div>
-                        <a href="#" class="btn">subscribe</a>
+                        <a href="<?php echo carbon_get_post_meta($pageId, 'podcast_btn_url')?>" class="btn"><?php echo carbon_get_post_meta($pageId, 'podcast_btn')?></a>
                     </div>
                 </div>
             </section>
             <section class="banner">
-                <video src="<?php echo get_template_directory_uri()?>/img/banner_1.mp4" class="banner__video" autoplay muted></video>
+                <?php $bannerBg_5 = carbon_get_post_meta($pageId, 'banner_5_video')[0]?>
+                <video src="<?php echo wp_get_attachment_url($bannerBg_5, 'full')?>" class="banner__video" autoplay muted></video>
             </section>
             <section class="socials">
                 <div class="container">
                     <ul class="socials__list">
-                        <li>
-                            <a href="#">
-                                <img src="<?php echo get_template_directory_uri()?>/img/soc_1.svg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="<?php echo get_template_directory_uri()?>/img/soc_2.svg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="<?php echo get_template_directory_uri()?>/img/soc_3.svg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="<?php echo get_template_directory_uri()?>/img/soc_4.svg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="<?php echo get_template_directory_uri()?>/img/soc_5.svg" alt="">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <img src="<?php echo get_template_directory_uri()?>/img/soc_6.svg" alt="">
-                            </a>
-                        </li>
+                        <?php foreach(carbon_get_theme_option('socials') as $social) : ?>
+                            <li>
+                                <a href="<?php echo $social['socials_link']?>" target="_blank">
+                                    <?php $socialImg = $social['socials_img']?>
+                                    <?php echo wp_get_attachment_image($socialImg, 'full')?>
+                                </a>
+                            </li>
+                        <?php endforeach;?>
                     </ul>
                     <div class="socials__right">
-                        <p class="socials__uptitle">My social media</p>
-                        <h2 class="section-title">Subscribe and follow me on <span>social media</span></h2>
+                        <p class="socials__uptitle"><?php echo carbon_get_post_meta($pageId, 'social_uptitle')?></p>
+                        <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'social_title')?></h2>
                     </div>
                 </div>
             </section>
             <section class="youtube">
                 <div class="container">
-                    <p class="youtube__uptitle">My YouTube</p>
-                    <h2 class="section-title"><span>YouTube channel</span> Billy Cox</h2>
+                    <p class="youtube__uptitle"><?php echo carbon_get_post_meta($pageId, 'youtube_uptitle')?></p>
+                    <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'youtube_title')?></h2>
                     <div class="youtube__list">
-                        <a class="youtube__item">
-                            <img src="<?php echo get_template_directory_uri()?>/img/youtube_1.jpg" class="youtube__item-img">
+                        <?php foreach(carbon_get_post_meta($pageId, 'youtube_list') as $youtubeItem) : ?>
+                        <a class="youtube__item" href="<?php echo $youtubeItem['youtube_url']?>" target="_blank">
+                            <?php $youtubeImg = $youtubeItem['youtube_img']?>
+                            <?php echo wp_get_attachment_image($youtubeImg, 'full', [], ["class" => "youtube__item-img"])?>
                             <svg width="37" height="37" viewBox="0 0 37 37" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <g filter="url(#filter0_b_161_2669)">
@@ -473,111 +414,20 @@
                                 </defs>
                             </svg>
                         </a>
-                        <a class="youtube__item">
-                            <img src="<?php echo get_template_directory_uri()?>/img/youtube_2.jpg" class="youtube__item-img">
-                            <svg width="37" height="37" viewBox="0 0 37 37" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g filter="url(#filter0_b_161_2669)">
-                                    <rect width="37" height="37" rx="18.5" fill="white" fill-opacity="0.21" />
-                                    <rect x="0.5" y="0.5" width="36" height="36" rx="18"
-                                        stroke="url(#paint0_linear_161_2669)" />
-                                </g>
-                                <path
-                                    d="M23.2751 17.4205C24.3082 18.0253 24.3082 19.5909 23.2752 20.1957L17.0378 23.8475C16.0338 24.4353 14.7999 23.6702 14.7999 22.4599L14.7999 15.1563C14.7999 13.946 16.0338 13.1809 17.0378 13.7687L23.2751 17.4205Z"
-                                    stroke="white" stroke-width="1.5" />
-                                <defs>
-                                    <filter id="filter0_b_161_2669" x="-10" y="-10" width="57" height="57"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                        <feGaussianBlur in="BackgroundImageFix" stdDeviation="5" />
-                                        <feComposite in2="SourceAlpha" operator="in"
-                                            result="effect1_backgroundBlur_161_2669" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_161_2669"
-                                            result="shape" />
-                                    </filter>
-                                    <linearGradient id="paint0_linear_161_2669" x1="1.85" y1="14.4917" x2="36.9782"
-                                        y2="13.8723" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="white" stop-opacity="0.68" />
-                                        <stop offset="1" stop-color="white" stop-opacity="0.39" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </a>
-                        <a class="youtube__item">
-                            <img src="<?php echo get_template_directory_uri()?>/img/youtube_3.jpg" class="youtube__item-img">
-                            <svg width="37" height="37" viewBox="0 0 37 37" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g filter="url(#filter0_b_161_2669)">
-                                    <rect width="37" height="37" rx="18.5" fill="white" fill-opacity="0.21" />
-                                    <rect x="0.5" y="0.5" width="36" height="36" rx="18"
-                                        stroke="url(#paint0_linear_161_2669)" />
-                                </g>
-                                <path
-                                    d="M23.2751 17.4205C24.3082 18.0253 24.3082 19.5909 23.2752 20.1957L17.0378 23.8475C16.0338 24.4353 14.7999 23.6702 14.7999 22.4599L14.7999 15.1563C14.7999 13.946 16.0338 13.1809 17.0378 13.7687L23.2751 17.4205Z"
-                                    stroke="white" stroke-width="1.5" />
-                                <defs>
-                                    <filter id="filter0_b_161_2669" x="-10" y="-10" width="57" height="57"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                        <feGaussianBlur in="BackgroundImageFix" stdDeviation="5" />
-                                        <feComposite in2="SourceAlpha" operator="in"
-                                            result="effect1_backgroundBlur_161_2669" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_161_2669"
-                                            result="shape" />
-                                    </filter>
-                                    <linearGradient id="paint0_linear_161_2669" x1="1.85" y1="14.4917" x2="36.9782"
-                                        y2="13.8723" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="white" stop-opacity="0.68" />
-                                        <stop offset="1" stop-color="white" stop-opacity="0.39" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </a>
-                        <a class="youtube__item">
-                            <img src="<?php echo get_template_directory_uri()?>/img/youtube_1.jpg" class="youtube__item-img">
-                            <svg width="37" height="37" viewBox="0 0 37 37" fill="none"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <g filter="url(#filter0_b_161_2669)">
-                                    <rect width="37" height="37" rx="18.5" fill="white" fill-opacity="0.21" />
-                                    <rect x="0.5" y="0.5" width="36" height="36" rx="18"
-                                        stroke="url(#paint0_linear_161_2669)" />
-                                </g>
-                                <path
-                                    d="M23.2751 17.4205C24.3082 18.0253 24.3082 19.5909 23.2752 20.1957L17.0378 23.8475C16.0338 24.4353 14.7999 23.6702 14.7999 22.4599L14.7999 15.1563C14.7999 13.946 16.0338 13.1809 17.0378 13.7687L23.2751 17.4205Z"
-                                    stroke="white" stroke-width="1.5" />
-                                <defs>
-                                    <filter id="filter0_b_161_2669" x="-10" y="-10" width="57" height="57"
-                                        filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                                        <feFlood flood-opacity="0" result="BackgroundImageFix" />
-                                        <feGaussianBlur in="BackgroundImageFix" stdDeviation="5" />
-                                        <feComposite in2="SourceAlpha" operator="in"
-                                            result="effect1_backgroundBlur_161_2669" />
-                                        <feBlend mode="normal" in="SourceGraphic" in2="effect1_backgroundBlur_161_2669"
-                                            result="shape" />
-                                    </filter>
-                                    <linearGradient id="paint0_linear_161_2669" x1="1.85" y1="14.4917" x2="36.9782"
-                                        y2="13.8723" gradientUnits="userSpaceOnUse">
-                                        <stop stop-color="white" stop-opacity="0.68" />
-                                        <stop offset="1" stop-color="white" stop-opacity="0.39" />
-                                    </linearGradient>
-                                </defs>
-                            </svg>
-                        </a>
+                        <?php endforeach;?>
                     </div>
                 </div>
             </section>
             <section class="podcast" id="podcasts">
                 <div class="container">
                     <div class="podcast__left">
-                        <h2 class="section-title">be on my <span>podcast</span></h2>
-                        <p class="podcast__text">I’m always looking for unique personalities and inspiring stories for
-                            my
-                            podcast, Dropping Bombs. If you or someone you know might be interested in Dropping Bombs
-                            with
-                            me on air, fill out this quick form. Someone from my team will reach out soon to discuss the
-                            details.</p>
+                        <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'be_podcast_title')?></h2>
+                        <p class="podcast__text">
+                            <?php echo carbon_get_post_meta($pageId, 'be_podcast_text')?>
+                        </p>
                     </div>
-                    <form action="#" class="podcast__form">
+                    <?php echo do_shortcode('[contact-form-7 id="103" title="Podcast form"]')?>
+                    <!-- <form action="#" class="podcast__form">
                         <input type="text" class="podcast__form-input" placeholder="First Name">
                         <input type="text" class="podcast__form-input" placeholder="Last Name">
                         <input type="email" class="podcast__form-input" placeholder="Email">
@@ -588,16 +438,18 @@
 
                         </textarea>
                         <input type="submit" value="Submit" class="btn">
-                    </form>
+                    </form> -->
                 </div>
             </section>
             <section class="banner">
-                <video src="<?php echo get_template_directory_uri()?>/img/banner_1.mp4" class="banner__video" autoplay muted></video>
+                <?php $bannerBg_6 = carbon_get_post_meta($pageId, 'banner_6_video')[0]?>
+                <video src="<?php echo wp_get_attachment_url($bannerBg_6, 'full')?>" class="banner__video" autoplay muted></video>
             </section>
             <section class="book" id="book">
                 <div class="container">
                     <div class="book__left">
-                        <img src="<?php echo get_template_directory_uri()?>/img/book.png" class="book__img">
+                        <?php $bookImg = carbon_get_post_meta($pageId, 'book_img')?>
+                        <?php echo wp_get_attachment_image($bookImg, 'full', [], ["class" => "book__img"])?>
                         <div class="book__swiper swiper">
                             <div class="book__pagination">
                                 <button class="book__pagination-btn book__pagination-prev"><svg width="11" height="17"
@@ -617,39 +469,25 @@
                                 </button>
                             </div>
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <h3>"Best book on Success I have ever read!"</h3>
-                                    <p>Jeffrey Hedges</p>
-                                </div>
-                                <div class="swiper-slide">
-                                    <h3>"Best book on Success I have ever read!"</h3>
-                                    <p>Jeffrey Hedges</p>
-                                </div>
-                                <div class="swiper-slide">
-                                    <h3>"Best book on Success I have ever read!"</h3>
-                                    <p>Jeffrey Hedges</p>
-                                </div>
-                                <div class="swiper-slide">
-                                    <h3>"Best book on Success I have ever read!"</h3>
-                                    <p>Jeffrey Hedges</p>
-                                </div>
+                                <?php foreach(carbon_get_post_meta($pageId, 'book_slider') as $bookSlide) : ?>
+                                    <div class="swiper-slide">
+                                        <h3><?php echo $bookSlide['book_slider_text']?></h3>
+                                        <p><?php echo $bookSlide['book_slider_author']?></p>
+                                    </div>
+                                <?php endforeach; ?>
                             </div>
                         </div>
                     </div>
                     <div class="book__right">
                         <p class="book__uptitle">
-                            My book
+                            <?php echo carbon_get_post_meta($pageId, 'book_uptitle')?>
                         </p>
-                        <h2 class="section-title">Get <span>my Dream book</span>
-                            and Best Year Ever for <span>free</span></h2>
+                        <h2 class="section-title"><?php echo carbon_get_post_meta($pageId, 'book_title')?></h2>
                         <div class="text">
-                            <p>I wrote this book to allow people to learn valuable lessons in life, business and sales
-                                to help ensure they become massively successful. The stories from my life explain why I
-                                think the way I do and how to avoid years of pain, roadblocks and frustration. </p>
-                            <p>The funny thing is, you will learn these lessons one way or another regardless, but
-                                reading my book will teach you quicker and at a fraction of the cost.</p>
+                            <p><?php echo carbon_get_post_meta($pageId, 'book_text_1')?></p>
+                            <p><?php echo carbon_get_post_meta($pageId, 'book_text_2')?></p>
                         </div>
-                        <a href="#" class="btn">Order my book</a>
+                        <a href="<?php echo carbon_get_post_meta($pageId, 'book_btn_url')?>" class="btn"><?php echo carbon_get_post_meta($pageId, 'book_btn')?></a>
                     </div>
                 </div>
             </section>

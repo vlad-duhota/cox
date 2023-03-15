@@ -11,8 +11,9 @@
     <div class="wrapper">
         <header class="header">
             <div class="container">
-                <a href="index.html" class="header__logo">
-                    <img src="<?php echo get_template_directory_uri()?>/img/logo.svg">
+                <a href="<?php echo get_home_url(); ?>" class="header__logo">
+                    <?php $custom_logo_id = get_theme_mod( 'custom_logo' ); ?>
+                    <?php echo wp_get_attachment_image( $custom_logo_id, 'full' ); ?>
                 </a>
                 <nav class="header__menu">
                     <ul class="header__menu-list">
@@ -26,7 +27,7 @@
                             <a href="#money">Make money with me</a>
                         </li>
                         <li class="header__menu-item">
-                            <a href="#">Blog</a>
+                            <a href="<?php echo get_home_url()?>/blog">Blog</a>
                         </li>
                         <li class="header__menu-item">
                             <a href="#training">Virtual training</a>
@@ -39,7 +40,7 @@
                         </li>
                     </ul>
                 </nav>
-                <a href="#" class="btn header__btn">Book Billy</a>
+                <a href="#training" class="btn header__btn">Book Billy</a>
                 <button class="header__menu-btn">
                     <span></span><span></span><span></span>
                 </button>
