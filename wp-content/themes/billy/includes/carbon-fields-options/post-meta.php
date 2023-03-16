@@ -58,7 +58,8 @@ Container::make('post meta', 'Front Page')
    ->add_fields( array(
       Field::make( 'text', 'study_item', 'Item' ),
    ) ),
-   Field::make( 'text', 'study_btn', 'Btn text' )
+   Field::make( 'text', 'study_btn', 'Btn text' ),
+   Field::make( 'text', 'study_btn_url', 'Btn link' )
 ) )
 
 ->add_tab( __('Banner 2'), array(
@@ -89,7 +90,7 @@ Container::make('post meta', 'Front Page')
    Field::make( 'text', 'sat_text_3', 'Item Text' ),  
    Field::make( 'text', 'sat_btn_3', 'Item Btn text' ),  
    Field::make( 'text', 'sat_btn_url_3', 'Item Btn url' )
-   ->set_help_text( 'Change this to #podcats if you need scroll down' ),
+   ->set_help_text( 'Full url' ),
 ) )
 ->add_tab( __('Banner 3'), array(
    Field::make( 'media_gallery', 'banner_3_video', 'Background video source' )
@@ -112,6 +113,7 @@ Container::make('post meta', 'Front Page')
    Field::make( 'text', 'training_text_1', 'Text 1' ), 
    Field::make( 'text', 'training_text_2', 'Text 2' ), 
    Field::make( 'text', 'training_btn', 'Btn text' ), 
+   Field::make( 'text', 'training_btn_url', 'Btn link' ), 
 ) )
 ->add_tab( __('Article'), array(
    Field::make( 'image', 'article_bg', 'Article bg' ), 

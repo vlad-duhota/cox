@@ -74,6 +74,16 @@
                             <?php echo wp_get_attachment_image($logoImg, 'full')?>
                         </a>
                     <?php endforeach;?>
+                    <div class="logos__swiper swiper">
+                        <div class="swiper-wrapper">
+                            <?php foreach(carbon_get_post_meta($pageId, 'logos_list') as $logo) : ?>
+                                <div href="<?php echo $logo['logos_url']?>" class="swiper-slide logos__item">
+                                    <?php $logoImg = $logo['logos_img']?>
+                                    <?php echo wp_get_attachment_image($logoImg, 'full')?>
+                                </div>
+                            <?php endforeach;?>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section class="banner banner_1">
@@ -101,7 +111,7 @@
                                 <li class="study__item"><?php echo $studyItem['study_item']?></li> 
                             <?php endforeach;?>
                         </ul>
-                        <a href="#training" class="btn dark"><?php echo carbon_get_post_meta($pageId, 'study_btn')?></a>
+                        <a href="<?php echo carbon_get_post_meta($pageId, 'study_btn_url')?>" class="btn dark"><?php echo carbon_get_post_meta($pageId, 'study_btn')?></a>
                     </div>
                     <a target="_blank" class="study__img">
                         <iframe width="560" height="315" src="<?php echo str_replace('?v=', '/', str_replace('watch', 'embed', carbon_get_post_meta($pageId, 'study_video_url')))?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -176,7 +186,7 @@
                             <p class="cards__item-text">
                                 <?php echo carbon_get_post_meta($pageId, 'sat_text_3')?>
                             </p>
-                            <a href="<?php echo get_home_url()?>/<?php echo carbon_get_post_meta($pageId, 'sat_btn_url_3')?>" class="btn"><?php echo carbon_get_post_meta($pageId, 'sat_btn_3')?></a>
+                            <a href="<?php echo carbon_get_post_meta($pageId, 'sat_btn_url_3')?>" class="btn"><?php echo carbon_get_post_meta($pageId, 'sat_btn_3')?></a>
                         </div>
                     </div>
                 </div>
@@ -227,7 +237,7 @@
                                 <?php echo carbon_get_post_meta($pageId, 'training_text_2')?>
                             </p>
                         </div>
-                        <a href="#training" class="btn"> <?php echo carbon_get_post_meta($pageId, 'training_btn')?></a>
+                        <a href="<?php echo carbon_get_post_meta($pageId, 'training_btn_url')?>" class="btn"> <?php echo carbon_get_post_meta($pageId, 'training_btn')?></a>
                     </div>
                 </div>
             </section>
@@ -240,6 +250,16 @@
                             <?php echo wp_get_attachment_image($logoImg, 'full')?>
                         </a>
                     <?php endforeach;?>
+                    <div class="logos__swiper swiper">
+                        <div class="swiper-wrapper">
+                            <?php foreach(carbon_get_post_meta($pageId, 'logos_list_2') as $logo) : ?>
+                                <div href="<?php echo $logo['logos_url']?>" class="swiper-slide logos__item">
+                                    <?php $logoImg = $logo['logos_img']?>
+                                    <?php echo wp_get_attachment_image($logoImg, 'full')?>
+                                </div>
+                            <?php endforeach;?>
+                        </div>
+                    </div>
                 </div>
             </section>
             <section class="article" id="reviews">
