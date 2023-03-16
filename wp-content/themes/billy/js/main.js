@@ -17,6 +17,18 @@ var swiper = new Swiper(".book__swiper", {
         prevEl: ".book__pagination-prev",
     },
 });
+
+var swiper2 = new Swiper(".logos__swiper", {
+    speed: 600,
+    slidesPerView: 3,
+    slidesPerSlide: 1,
+    spaceBetween: 20,
+    autoplay: {
+        delay: 5000,
+    },
+    loop: true,
+});
+
 document.querySelectorAll('a[href^="#"]').forEach(trigger => {
     trigger.onclick = function (e) {
         e.preventDefault();
@@ -36,6 +48,7 @@ document.querySelectorAll('a[href^="#"]').forEach(trigger => {
 // header mob menu
 
 const menuBtn = document.querySelector('.header__menu-btn');
+const menuLinks = document.querySelectorAll('.header__menu a');
 const headerBtn = document.querySelector('.header__btn');
 const menu = document.querySelector('.header__menu');
 const documentElem = document.querySelector('body');
@@ -53,3 +66,17 @@ menuBtn.addEventListener('click', function (e) {
     menuState = !menuState;
 });
 
+
+menuLinks.forEach((elem) => {
+    elem.addEventListener('click', function () {
+        menuBtn.classList.toggle('active');
+        menu.classList.toggle('active');
+        headerBtn.classList.toggle('active');
+        if (menuState) {
+            documentElem.style.overflow = 'scroll';
+        } else {
+            documentElem.style.overflow = 'hidden';
+        }
+        menuState = !menuState;
+    });
+})

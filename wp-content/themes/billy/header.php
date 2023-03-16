@@ -3,6 +3,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <?php wp_head() ?>
+    <script async src="https://link.msgsndr.com/js/form_embed.js"></script>
 </head>
 <body <?php body_class() ?>>
 

@@ -11,39 +11,33 @@
                         </div>
                         <div class="footer-top__col">
                             <h3 class="footer__title"><?php echo carbon_get_theme_option('footer_title_1')?></h3>
-                            <ul class="footer-top__list">
-                                <li>
-                                    <a href="#about">About me</a>
-                                </li>
-                                <li>
-                                    <a href="#money">Make money with me</a>
-                                </li>
-                                <li>
-                                    <a href="#">Blog</a>
-                                </li>
-                            </ul>
+                            <?php 
+                            wp_nav_menu(   
+                                array ( 
+                                    'theme_location' => 'footer-1' 
+                                ) 
+                            ); 
+                        ?>
                         </div>
                         <div class="footer-top__col">
                             <h3 class="footer__title"><?php echo carbon_get_theme_option('footer_title_2')?></h3>
-                            <ul class="footer-top__list">
-                                <li>
-                                    <a href="#book">Order book</a>
-                                </li>
-                                <li>
-                                    <a href="#">Make Shop Merch</a>
-                                </li>
-                            </ul>
+                            <?php 
+                            wp_nav_menu(   
+                                array ( 
+                                    'theme_location' => 'footer-2' 
+                                ) 
+                            ); 
+                        ?>
                         </div>
                         <div class="footer-top__col">
                             <h3 class="footer__title"><?php echo carbon_get_theme_option('footer_title_3')?></h3>
-                            <ul class="footer-top__list">
-                                <li>
-                                    <a href="#training">Virtual training</a>
-                                </li>
-                                <li>
-                                    <a href="#school">School</a>
-                                </li>
-                            </ul>
+                            <?php 
+                            wp_nav_menu(   
+                                array ( 
+                                    'theme_location' => 'footer-3' 
+                                ) 
+                            ); 
+                        ?>
                         </div>
                         <div class="footer-top__col">
                             <h3 class="footer__title"><?php echo carbon_get_theme_option('footer_title_4')?></h3>
