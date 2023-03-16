@@ -290,9 +290,15 @@ body {
   bottom: -78px;
   left: 0;
 }
+.hero .ep-iFrameContainer {
+  order: -1;
+}
 .hero .container {
   position: relative;
   z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 .hero .btn {
   border: none;

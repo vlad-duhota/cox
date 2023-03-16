@@ -49,7 +49,8 @@
                 </div>
                 </div>
             <div class="contact__form">
-                <?php echo do_shortcode('[contact-form-7 id="63" title="Contact form 1"]') ?>
+                <!-- <?php echo do_shortcode('[contact-form-7 id="63" title="Contact form 1"]') ?> -->
+                <?php echo carbon_get_post_meta($pageId, 'contact_form')?>
             </div>
     
         </div>
