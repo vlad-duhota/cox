@@ -26,6 +26,7 @@
                 <li class="faq__item">
                     <h3><?php echo $faqItem['faq_list_title']?></h3>
                     <div class="faq__item-text text">
+                        <p></p>
                         <?php echo $faqItem['faq_list_text']?>
                     </div>
                     <div class="faq__item-btn">
