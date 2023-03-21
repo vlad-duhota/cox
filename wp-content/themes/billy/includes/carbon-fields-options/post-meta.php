@@ -196,7 +196,8 @@ Container::make('post meta', 'Speaking Page')
    Field::make( 'media_gallery', 'hero_video', 'Background video source' )
     ->set_type( array('video' ) ),
    Field::make( 'text', 'hero_btn', 'Button Text' ), 
-   Field::make( 'text', 'hero_btn_url', 'Button Link' ), 
+   Field::make( 'file', 'hero_btn_file', 'Button File' )
+   ->set_value_type('url'), 
 ) )
 ->add_tab( __('What Are The Goals Of Your Next Conference?'), array(
    Field::make( 'text', 'faq_title_1', 'Title 1' ), 
