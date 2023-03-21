@@ -80,3 +80,15 @@ menuLinks.forEach((elem) => {
         menuState = !menuState;
     });
 })
+
+// speaking 
+const faqs = document.querySelectorAll('.faq__item');
+if (faqs) {
+    faqs.forEach(faq => {
+        faq.querySelectorAll('h3, .faq__item-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                faq.classList.toggle('active');
+            })
+        })
+    })
+}

@@ -188,3 +188,37 @@ Container::make('post meta', 'Contact page')
    Field::make( 'text', 'contact_title', 'Title' ),
    Field::make( 'text', 'contact_form', 'Form Iframe' ),
 ) );
+
+Container::make('post meta', 'Speaking Page')
+->show_on_template('speaking-page.php')
+->add_tab( __('First block'), array(
+   Field::make( 'text', 'hero_text', 'Text' ), 
+   Field::make( 'media_gallery', 'hero_video', 'Background video source' )
+    ->set_type( array('video' ) ),
+   Field::make( 'text', 'hero_btn', 'Button Text' ), 
+   Field::make( 'text', 'hero_btn_url', 'Button Link' ), 
+) )
+->add_tab( __('What Are The Goals Of Your Next Conference?'), array(
+   Field::make( 'text', 'faq_title_1', 'Title 1' ), 
+   Field::make( 'text', 'faq_uptitle', 'Uptitle' ), 
+   Field::make( 'text', 'faq_title_2', 'Title 2' ), 
+   Field::make( 'complex', 'faq_list', 'List' )
+   ->add_fields( array(
+      Field::make( 'text', 'faq_list_title', 'Question' ),
+      Field::make( 'rich_text', 'faq_list_text', 'Text' ),
+   ) )
+) )
+->add_tab( __('Speaking And Training'), array(
+   Field::make( 'separator', 'sat_sep_1', 'Item 1' ),
+   Field::make( 'image', 'sat_img_1', 'Item Image' ), 
+   Field::make( 'text', 'sat_title_1', 'Item Title' ), 
+   Field::make( 'rich_text', 'sat_text_1', 'Item Text' ),  
+   Field::make( 'separator', 'sat_sep_2', 'Item 2' ),
+   Field::make( 'image', 'sat_img_2', 'Item Image' ), 
+   Field::make( 'text', 'sat_title_2', 'Item Title' ), 
+   Field::make( 'rich_text', 'sat_text_2', 'Item Text' ),
+   Field::make( 'separator', 'sat_sep_3', 'Item 3' ),
+   Field::make( 'image', 'sat_img_3', 'Item Image' ),
+   Field::make( 'text', 'sat_title_3', 'Item Title' ),  
+   Field::make( 'rich_text', 'sat_text_3', 'Item Text' ),  
+) );

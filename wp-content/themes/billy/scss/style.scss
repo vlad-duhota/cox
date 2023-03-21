@@ -272,6 +272,32 @@ body {
         bottom: -78px;
         left: 0;
     }
+    &.speaking {
+        .hero__img {
+            bottom: unset;
+            top: 0;
+        }
+        .container {
+            max-width: 640px;
+            display: block;
+        }
+        text-align: center;
+        .section-title {
+            margin-bottom: 15px;
+            @media (min-width: 768px) {
+                margin-bottom: 28px;
+            }
+        }
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            @media (min-width: 768px) {
+                margin-top: 35px;
+            }
+        }
+    }
     .ep-iFrameContainer {
         order: -1;
     }
@@ -841,7 +867,11 @@ body {
         }
         &-text {
             margin: 23px 0 32px;
-            font-size: 18px;
+            font-size: 14px;
+            @media (min-width: 768px) {
+                font-size: 18px;
+            }
+            font-weight: 400;
             letter-spacing: 0.01em;
             color: rgba(255, 255, 255, 0.81);
         }
@@ -1508,4 +1538,4 @@ body {
     height: 400px !important;
 }
 
-@import "blog", "contact";
+@import "blog", "contact", "speaking";
