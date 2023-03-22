@@ -94,6 +94,9 @@ body {
     @media (max-width: 1099px) {
         font-size: 14px;
     }
+    @media (min-width: 1099px) {
+        overflow: visible !important;
+    }
 }
 
 .text {

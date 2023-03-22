@@ -101,6 +101,11 @@ body {
     font-size: 14px;
   }
 }
+@media (min-width: 1099px) {
+  body {
+    overflow: visible !important;
+  }
+}
 
 .text p:not(:last-child) {
   margin-bottom: 20px;
