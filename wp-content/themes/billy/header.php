@@ -17,6 +17,13 @@
                     <?php echo wp_get_attachment_image( $custom_logo_id, 'full' ); ?>
                 </a>
                 <nav class="header__menu">
+                <?php wp_nav_menu(   
+                        array ( 
+                            'theme_location' => 'header-menu' 
+                        ) 
+                ); ?>
+                </nav>
+                <!-- <nav class="header__menu">
                     <ul class="header__menu-list">
                         <li class="header__menu-item">
                             <a href="#about">About me</a>
@@ -40,7 +47,7 @@
                             <a href="#">Shop Merch</a>
                         </li>
                     </ul>
-                </nav>
+                </nav> -->
                 <a href="#training" class="btn header__btn">Book Billy</a>
                 <button class="header__menu-btn">
                     <span></span><span></span><span></span>

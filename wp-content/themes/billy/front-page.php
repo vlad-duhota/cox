@@ -518,7 +518,8 @@
                             <p><?php echo carbon_get_post_meta($pageId, 'book_text_1')?></p>
                             <p><?php echo carbon_get_post_meta($pageId, 'book_text_2')?></p>
                         </div>
-                        <a href="<?php echo carbon_get_post_meta($pageId, 'book_btn_url')?>" class="btn"><?php echo carbon_get_post_meta($pageId, 'book_btn')?></a>
+                        <!-- <a href="<?php echo carbon_get_post_meta($pageId, 'book_btn_url')?>" class="btn"><?php echo carbon_get_post_meta($pageId, 'book_btn')?></a> -->
+                           <a href="<?php echo get_home_url()?>/coming-soon" class="btn"><?php echo carbon_get_post_meta($pageId, 'book_btn')?></a>
                     </div>
                 </div>
             </section>

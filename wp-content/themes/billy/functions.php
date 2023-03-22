@@ -123,6 +123,7 @@ function wp_custom_trim_words( $text, $num_words = 55, $more = null ) {
 function register_menus() { 
 	register_nav_menus(
         array(
+            'header-menu' => 'Header Menu',
             'footer-1' => 'Footer Menu 1',
             'footer-2' => 'Footer Menu 2',
 			'footer-3' => 'Footer Menu 3',

@@ -223,3 +223,10 @@ Container::make('post meta', 'Speaking Page')
    Field::make( 'text', 'sat_title_3', 'Item Title' ),  
    Field::make( 'rich_text', 'sat_text_3', 'Item Text' ),  
 ) );
+
+Container::make('post meta', 'Coming soon Page')
+->show_on_template('coming-page.php')
+->add_tab( __('First block'), array(
+   Field::make( 'media_gallery', 'hero_video', 'Background video source' )
+    ->set_type( array('video' ) ),
+) );
