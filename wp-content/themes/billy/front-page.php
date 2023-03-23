@@ -6,7 +6,8 @@
     <?php $bg = carbon_get_post_meta($pageId, 'hero_video')[0]?>
     <video class="hero__img" src="<?php echo wp_get_attachment_url($bg, 'full')?>" autoplay muted></video>
     <div class="container">
-    <iframe 
+        <?php echo do_shortcode('[contact-form-7 id="64" title="Hero form"]')?>
+    <!-- <iframe 
           src="https://api.leadconnectorhq.com/widget/form/NKl3vRmNz98C39QgoQec" 
           style="width:100%;height:100%;border:none;border-radius:4px"
           id="inline-NKl3vRmNz98C39QgoQec" 
@@ -22,8 +23,8 @@
         data-layout-iframe-id="inline-NKl3vRmNz98C39QgoQec"
         data-form-id="NKl3vRmNz98C39QgoQec"
       >
-        </iframe>
-        <script src="https://link.msgsndr.com/js/form_embed.js"></script>
+        </iframe> -->
+        <!-- <script src="https://link.msgsndr.com/js/form_embed.js"></script> -->
                     <p class="hero__text"><?php echo carbon_get_post_meta($pageId, 'hero_text')?></p>
                 </div>
             </section>
@@ -181,7 +182,7 @@
                             <p class="cards__item-text">
                                 <?php echo carbon_get_post_meta($pageId, 'sat_text_1')?>
                             </p>
-                            <a href="<?php echo get_home_url()?>/<?php echo carbon_get_post_meta($pageId, 'sat_btn_url_1')?>" class="btn"><?php echo carbon_get_post_meta($pageId, 'sat_btn_1')?></a>
+                            <a href="<?php echo get_home_url()?>/speaking" class="btn"><?php echo carbon_get_post_meta($pageId, 'sat_btn_1')?></a>
                         </div>
                     </div>
                     <div class="cards__item reverse">

@@ -21,6 +21,7 @@
         <h2 class="section-title faq__title_1"><?php echo carbon_get_post_meta($pageId, 'faq_title_1')?></h2>
         <p class="faq__uptitle"><?php echo carbon_get_post_meta($pageId, 'faq_uptitle')?></p>
         <h2 class="section-title faq__title_2"><?php echo carbon_get_post_meta($pageId, 'faq_title_2')?></h2>
+        <div class="faq__cols">
         <ul class="faq__list">
             <?php foreach(carbon_get_post_meta($pageId, 'faq_list') as $faqItem) : ?>
                 <li class="faq__item">
@@ -37,6 +38,8 @@
                 </li>
             <?php endforeach;?>
         </ul>
+        <?php echo do_shortcode('[contact-form-7 id="161" title="Contact form Speaking"]') ?>
+        </div> 
     </div>
 </section>
 <section class="cards cards-speaking">

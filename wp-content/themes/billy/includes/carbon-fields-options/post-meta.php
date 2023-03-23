@@ -186,7 +186,7 @@ Container::make('post meta', 'Contact page')
 ->show_on_template('contact-page.php')
 ->add_fields( array(
    Field::make( 'text', 'contact_title', 'Title' ),
-   Field::make( 'text', 'contact_form', 'Form Iframe' ),
+   Field::make( 'image', 'contact_img', 'Image' ),
 ) );
 
 Container::make('post meta', 'Speaking Page')
