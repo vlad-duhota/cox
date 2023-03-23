@@ -22,7 +22,7 @@
 /** The name of the database for WordPress */
 define( 'DB_NAME', 'hx459480_cox' );
 define('WP_CACHE', true);
-define( 'WPCACHEHOME', '/Users/duhotavlad/Sites/billy-cox/wp-content/plugins/wp-super-cache/' );
+define( 'WPCACHEHOME', '/home/hx459480/mediol.school/billy-cox/wp-content/plugins/wp-super-cache/' );
 /** Database username */
 define( 'DB_USER', 'hx459480_cox' );
 
@@ -80,7 +80,7 @@ $table_prefix = 'wp_';
  *
  * @link https://wordpress.org/support/article/debugging-in-wordpress/
  */
-define( 'WP_DEBUG', true );
+define( 'WP_DEBUG', false );
 
 /* Add any custom values between this line and the "stop editing" line. */
 
