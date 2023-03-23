@@ -118,6 +118,15 @@ body {
         align-items: center;
         justify-content: space-between;
     }
+    &__logo {
+        @media (max-width: 576px) {
+            img {
+                display: block;
+                height: 60px;
+                width: auto;
+            }
+        }
+    }
     &__menu {
         &-btn {
             width: 30px;

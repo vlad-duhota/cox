@@ -1,5 +1,18 @@
 .faq {
     padding-top: 40px;
+    &__cols {
+        display: grid;
+        gap: 25px;
+        @media (min-width: 992px) {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+        }
+
+        margin-top: 15px;
+        @media (min-width: 768px) {
+            margin-top: 49px;
+        }
+    }
     &__title_1 {
         text-align: center;
         position: relative;
@@ -40,10 +53,6 @@
         margin: 0 auto;
     }
     &__list {
-        margin-top: 15px;
-        @media (min-width: 768px) {
-            margin-top: 49px;
-        }
     }
     &__item {
         padding: 15px 0;
@@ -105,6 +114,92 @@
             .faq__item-btn svg {
                 transform: rotate(180deg);
             }
+        }
+    }
+    form {
+        display: block;
+        width: 100%;
+        & > p {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            @media (max-width: 992px) {
+                gap: 15px;
+            }
+            &:last-of-type {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    }
+    .wpcf7-form-control-wrap {
+        width: 100%;
+    }
+    .wpcf7-not-valid-tip {
+        font-size: 12px;
+        margin-top: 5px;
+        padding-left: 3px;
+    }
+    br {
+        display: none;
+    }
+    [data-name="obstacle"],
+    [data-name="do-living"],
+    [data-name="invest"] {
+        width: 100%;
+    }
+
+    input:not([type="submit"]),
+    textarea {
+        background: rgba(255, 255, 255, 0.06);
+        box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(50px);
+        border-radius: 2px;
+        border: 1px solid;
+        width: 100%;
+        padding: 17px 19px;
+        outline: none;
+        font-family: "Gilroy";
+        font-weight: 400;
+        font-size: 17px;
+        color: #ffffff;
+        border-image-source: linear-gradient(
+            90.03deg,
+            rgba(255, 255, 255, 0.43) -99.93%,
+            rgba(255, 255, 255, 0.01) 46.87%,
+            rgba(255, 255, 255, 0.15) 99.97%
+        );
+        &::placeholder {
+            font-family: "Gilroy";
+            font-weight: 400;
+            font-size: 17px;
+            color: #ffffff;
+        }
+    }
+    textarea {
+        resize: none;
+        height: 113px;
+    }
+    input[type="submit"] {
+        text-align: center;
+        display: inline-block;
+        min-width: 170px;
+        background: #b70e0e;
+        color: #fff;
+        font-weight: 500;
+        border-radius: 2px;
+        border-bottom-left-radius: 14px;
+        border-top-right-radius: 14px;
+        padding: 11px 46px;
+        font-family: "Gilroy";
+        color: #fff;
+        font-size: 17px;
+        text-transform: capitalize;
+        transition: background 0.3s;
+        border: none;
+        margin-top: 45px;
+        &:hover {
+            background: darken(#b70e0e, 10%);
         }
     }
 }
