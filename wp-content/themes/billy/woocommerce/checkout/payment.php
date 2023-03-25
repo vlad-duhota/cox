@@ -22,19 +22,7 @@ if ( ! wp_doing_ajax() ) {
 }
 ?>
 <div id="payment" class="woocommerce-checkout-payment">
-	<?php if ( WC()->cart->needs_payment() ) : ?>
-		<ul class="wc_payment_methods payment_methods methods">
-			<?php
-			if ( ! empty( $available_gateways ) ) {
-				foreach ( $available_gateways as $gateway ) {
-					wc_get_template( 'checkout/payment-method.php', array( 'gateway' => $gateway ) );
-				}
-			} else {
-				echo '<li class="woocommerce-notice woocommerce-notice--info woocommerce-info">' . apply_filters( 'woocommerce_no_available_payment_methods_message', WC()->customer->get_billing_country() ? esc_html__( 'Sorry, it seems that there are no available payment methods for your state. Please contact us if you require assistance or wish to make alternate arrangements.', 'woocommerce' ) : esc_html__( 'Please fill in your details above to see available payment methods.', 'woocommerce' ) ) . '</li>'; // @codingStandardsIgnoreLine
-			}
-			?>
-		</ul>
-	<?php endif; ?>
+
 	<div class="form-row place-order">
 		<noscript>
 			<?php
@@ -43,13 +31,21 @@ if ( ! wp_doing_ajax() ) {
 			?>
 			<br/><button type="submit" class="button alt<?php echo esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ); ?>" name="woocommerce_checkout_update_totals" value="<?php esc_attr_e( 'Update totals', 'woocommerce' ); ?>"><?php esc_html_e( 'Update totals', 'woocommerce' ); ?></button>
 		</noscript>
+		<svg width="120" height="29" viewBox="0 0 120 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path fill-rule="evenodd" clip-rule="evenodd" d="M10.4453 6.82617H18.6249C23.0166 6.82617 24.6698 9.04947 24.4143 12.3158C23.992 17.7083 20.732 20.6917 16.4079 20.6917H14.2247C13.6314 20.6917 13.2324 21.0844 13.0719 22.1486L12.145 28.335C12.0838 28.7361 11.8726 28.9684 11.5559 29H6.41677C5.93326 29 5.76224 28.6306 5.88892 27.8303L9.02224 7.998C9.1447 7.20412 9.57964 6.82617 10.4453 6.82617Z" fill="#A4A4A4"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M45.9563 6.45886C48.7159 6.45886 51.2622 7.95584 50.9139 11.6867C50.4916 16.1206 48.1163 18.574 44.3685 18.5846H41.0938C40.6229 18.5846 40.3949 18.9689 40.2724 19.7564L39.639 23.7829C39.544 24.3909 39.2315 24.6908 38.7712 24.6908H35.7245C35.2389 24.6908 35.07 24.3804 35.1776 23.6857L37.6923 7.54834C37.8169 6.75446 38.1146 6.45886 38.6572 6.45886H45.95H45.9563ZM40.9945 15.0987H43.4754C45.0273 15.0396 46.0577 13.9649 46.1611 12.0266C46.2245 10.8294 45.4158 9.97222 44.1299 9.97855L41.7947 9.98911L40.9945 15.0987ZM59.1969 23.4556C59.4756 23.2022 59.7585 23.0713 59.7184 23.3838L59.6191 24.1312C59.5685 24.5218 59.7226 24.7288 60.0858 24.7288H62.7926C63.2486 24.7288 63.4703 24.5451 63.5822 23.8399L65.2502 13.3716C65.3347 12.8458 65.2059 12.5882 64.8068 12.5882H61.8298C61.5616 12.5882 61.4307 12.7381 61.361 13.1478L61.2512 13.7917C61.1942 14.1274 61.0401 14.1866 60.8965 13.8487C60.3919 12.6537 59.104 12.1174 57.3072 12.1596C53.1329 12.2462 50.3184 15.4154 50.0165 19.4777C49.7843 22.6195 52.035 25.0877 55.0036 25.0877C57.1573 25.0877 58.1201 24.4543 59.2053 23.4619L59.1969 23.4556ZM56.9292 21.8446C55.1324 21.8446 53.8804 20.411 54.1401 18.6543C54.3998 16.8976 56.0804 15.464 57.8772 15.464C59.674 15.464 60.9261 16.8976 60.6664 18.6543C60.4067 20.411 58.7281 21.8446 56.9292 21.8446ZM70.5477 12.5545H67.8029C67.2371 12.5545 67.0069 12.9767 67.1864 13.4961L70.5942 23.4746L67.2518 28.2231C66.971 28.6201 67.1885 28.9811 67.5833 28.9811H70.6681C70.8479 29.0019 71.0298 28.9706 71.1923 28.8908C71.3548 28.8111 71.4909 28.6863 71.5844 28.5314L82.0654 13.4983C82.3884 13.0359 82.2364 12.5502 81.7065 12.5502H78.7864C78.286 12.5502 78.0854 12.7487 77.7983 13.1647L73.4277 19.4988L71.4746 13.1499C71.3606 12.7656 71.0756 12.5545 70.5498 12.5545H70.5477Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M92.9688 6.45869C95.7284 6.45869 98.2748 7.95568 97.9264 11.6865C97.5041 16.1204 95.1288 18.5739 91.3811 18.5844H88.1084C87.6376 18.5844 87.4095 18.9687 87.2871 19.7563L86.6537 23.7827C86.5587 24.3908 86.2462 24.6906 85.7859 24.6906H82.7391C82.2535 24.6906 82.0846 24.3802 82.1923 23.6856L84.7112 7.54395C84.8357 6.75006 85.1335 6.45447 85.6761 6.45447H92.9688V6.45869ZM88.0071 15.0985H90.488C92.0398 15.0394 93.0702 13.9647 93.1737 12.0264C93.237 10.8293 92.4283 9.97205 91.1425 9.97839L88.8073 9.98895L88.0071 15.0985ZM106.209 23.4554C106.488 23.2021 106.771 23.0712 106.731 23.3836L106.632 24.1311C106.581 24.5217 106.735 24.7286 107.098 24.7286H109.805C110.261 24.7286 110.483 24.5449 110.595 23.8397L112.263 13.3714C112.347 12.8457 112.218 12.5881 111.819 12.5881H108.847C108.578 12.5881 108.447 12.738 108.378 13.1476L108.268 13.7916C108.211 14.1273 108.057 14.1864 107.913 13.8486C107.409 12.6535 106.121 12.1172 104.324 12.1595C100.15 12.246 97.3352 15.4152 97.0333 19.4776C96.801 22.6193 99.0518 25.0875 102.02 25.0875C104.174 25.0875 105.137 24.4541 106.222 23.4618L106.209 23.4554ZM103.944 21.8444C102.147 21.8444 100.895 20.4108 101.155 18.6541C101.414 16.8974 103.095 15.4638 104.892 15.4638C106.689 15.4638 107.941 16.8974 107.681 18.6541C107.421 20.4108 105.741 21.8444 103.944 21.8444ZM116.429 24.7455H113.304C113.249 24.7479 113.195 24.7383 113.145 24.7174C113.095 24.6964 113.05 24.6646 113.013 24.6243C112.977 24.584 112.95 24.536 112.934 24.484C112.918 24.432 112.914 24.377 112.922 24.3232L115.666 6.93376C115.693 6.81508 115.758 6.70876 115.852 6.63209C115.947 6.55542 116.064 6.51291 116.186 6.51148H119.311C119.365 6.50905 119.419 6.51865 119.469 6.5396C119.52 6.56055 119.565 6.59233 119.601 6.63267C119.638 6.67301 119.665 6.72091 119.681 6.77296C119.696 6.82501 119.701 6.87992 119.693 6.93376L116.948 24.3232C116.923 24.4427 116.857 24.55 116.763 24.6275C116.669 24.705 116.551 24.7481 116.429 24.7497V24.7455Z" fill="#A4A4A4"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M5.32881 0H13.5168C15.8224 0 18.5588 0.0738988 20.3873 1.68912C21.6098 2.76804 22.2516 4.4846 22.1038 6.33419C21.6013 12.586 17.862 16.0888 12.8454 16.0888H8.80838C8.12007 16.0888 7.66612 16.5449 7.47187 17.7779L6.34439 24.9567C6.27049 25.4212 6.0699 25.6957 5.71097 25.7295H0.6584C0.0988808 25.7295 -0.0995922 25.3072 0.046094 24.3739L3.67769 1.36396C3.82338 0.439168 4.33223 0 5.32881 0Z" fill="white"/>
+<path fill-rule="evenodd" clip-rule="evenodd" d="M7.59082 17.0496L9.02024 7.99804C9.14481 7.20415 9.57976 6.8241 10.4454 6.8241H18.625C19.9784 6.8241 21.0742 7.03524 21.9314 7.42585C21.1101 12.9915 17.5102 16.0826 12.7975 16.0826H8.76687C8.22635 16.0847 7.82941 16.3549 7.59082 17.0496Z" fill="#C6C6C6"/>
+</svg>
 
 		<?php wc_get_template( 'checkout/terms.php' ); ?>
 
 		<?php do_action( 'woocommerce_review_order_before_submit' ); ?>
-
-		<?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="button alt' . esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ) . '" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . esc_html( $order_button_text ) . '</button>' ); // @codingStandardsIgnoreLine ?>
-
+		<div class="btns">
+		<a href="<?php echo get_home_url()?>/shop" class="btn light">continue shopping </a>
+		<?php echo apply_filters( 'woocommerce_order_button_html', '<button type="submit" class="btn button alt' . esc_attr( wc_wp_theme_get_element_class_name( 'button' ) ? ' ' . wc_wp_theme_get_element_class_name( 'button' ) : '' ) . '" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr( $order_button_text ) . '" data-value="' . esc_attr( $order_button_text ) . '">' . 'Proceed to Pay Pal' . '</button>' ); // @codingStandardsIgnoreLine ?>
+		</div>
 		<?php do_action( 'woocommerce_review_order_after_submit' ); ?>
 
 		<?php wp_nonce_field( 'woocommerce-process_checkout', 'woocommerce-process-checkout-nonce' ); ?>

@@ -125,10 +125,15 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.header__logo img {
+  display: block;
+  height: 55px;
+  width: auto;
+}
 @media (max-width: 576px) {
   .header__logo img {
     display: block;
-    height: 60px;
+    height: 40px;
     width: auto;
   }
 }
@@ -280,6 +285,10 @@ body {
 }
 .btn.dark {
   background: #0d0d0d;
+}
+.btn.light {
+  background: #fff !important;
+  color: #000;
 }
 .btn:hover {
   background: #880a0a;

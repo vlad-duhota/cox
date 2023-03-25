@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-do_action( 'woocommerce_before_checkout_form', $checkout );
+
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
 if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_required() && ! is_user_logged_in() ) {
@@ -28,6 +28,23 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 }
 
 ?>
+<section class="checkout checkout-sec">
+	<div class="container">
+	<h1 class="section-title">Checkout</h1>
+	<ul class="cart__steps">
+			<li class="cart__step">
+				<span>1</span>
+				Basket
+			</li>
+			<li class="cart__step active">
+				<span>2</span>
+				Delivery & Payment
+			</li>
+			<li class="cart__step">
+				<span>3</span>
+				Complete Order
+			</li>
+		</ul>
 
 <form name="checkout" method="post" class="checkout woocommerce-checkout" action="<?php echo esc_url( wc_get_checkout_url() ); ?>" enctype="multipart/form-data">
 
@@ -51,7 +68,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 	
 	<?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
 	
-	<h3 id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
+	<h3 class="checkout__title" id="order_review_heading"><?php esc_html_e( 'Your order', 'woocommerce' ); ?></h3>
 	
 	<?php do_action( 'woocommerce_checkout_before_order_review' ); ?>
 
@@ -64,3 +81,7 @@ if ( ! $checkout->is_registration_enabled() && $checkout->is_registration_requir
 </form>
 
 <?php do_action( 'woocommerce_after_checkout_form', $checkout ); ?>
+
+	
+</div>
+</section>

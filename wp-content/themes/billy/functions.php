@@ -8,7 +8,7 @@ function base_scripts_styles() {
 	wp_enqueue_style('tel-input', get_template_directory_uri() . '/css/intlTelInput.min.css', [] );
     wp_enqueue_style('swiper style', 'https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css', [] );
     wp_enqueue_style('main style', get_template_directory_uri() . '/css/style.css', [] );
-    if(is_shop()){
+    if(is_woocommerce() || is_cart() || is_checkout()){
         wp_enqueue_style('shop style', get_template_directory_uri() . '/css/shop.css', [] );
     }
     wp_enqueue_style('theme', get_stylesheet_uri(), [] );
@@ -138,10 +138,52 @@ add_action('init', 'register_menus');
 function mytheme_add_woocommerce_support() {
 	add_theme_support( 'woocommerce' );
 	add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
-    // add_theme_support( 'wc-product-gallery-lightbox' );
+    add_theme_support( 'wc-product-gallery-lightbox' );
 }
 add_action( 'after_setup_theme', 'mytheme_add_woocommerce_support' );
 
 add_filter( 'single_product_archive_thumbnail_size', function( $size ) {
 	return 'medium';
 } );
+
+add_filter( 'woocommerce_breadcrumb_defaults', 'jk_woocommerce_breadcrumbs' );
+function jk_woocommerce_breadcrumbs() {
+    return array(
+            'delimiter'   => ' <span class="line"> / </span> ',
+            'wrap_before' => '<nav class="woocommerce-breadcrumb" itemprop="breadcrumb">',
+            'wrap_after'  => '</nav>',
+            'before'      => '',
+            'after'       => '',
+            'home'        => _x( 'Books', 'breadcrumb', 'woocommerce' ),
+        );
+}
+add_filter('woocommerce_checkout_fields', 'njengah_override_checkout_fields');
+
+function njengah_override_checkout_fields($fields)
+
+ {
+
+ unset($fields['billing']['billing_address_2']);
+
+ $fields['billing']['billing_company']['placeholder'] = 'Company name (optional)';
+
+
+ $fields['billing']['billing_first_name']['placeholder'] = 'First Name';
+
+ $fields['shipping']['shipping_first_name']['placeholder'] = 'First Name';
+
+ $fields['shipping']['shipping_last_name']['placeholder'] = 'Last Name';
+
+ $fields['shipping']['shipping_company']['placeholder'] = 'Company Name';
+
+ $fields['billing']['billing_last_name']['placeholder'] = 'Last Name';
+
+ $fields['billing']['billing_email']['placeholder'] = 'Email Address ';
+ $fields['billing']['billing_postcode']['placeholder'] = 'Postcode';
+ $fields['billing']['billing_city']['placeholder'] = 'Town / City ';
+ $fields['billing']['billing_phone']['placeholder'] = 'Phone ';
+
+
+ return $fields;
+
+ }

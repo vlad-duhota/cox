@@ -119,10 +119,15 @@ body {
         justify-content: space-between;
     }
     &__logo {
+        img {
+            display: block;
+            height: 55px;
+            width: auto;
+        }
         @media (max-width: 576px) {
             img {
                 display: block;
-                height: 60px;
+                height: 40px;
                 width: auto;
             }
         }
@@ -265,6 +270,10 @@ body {
     transition: 0.3s;
     &.dark {
         background: #0d0d0d;
+    }
+    &.light {
+        background: #fff !important;
+        color: #000;
     }
     &:hover {
         background: darken(#b70e0e, 10%);
