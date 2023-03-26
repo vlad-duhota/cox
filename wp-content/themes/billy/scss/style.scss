@@ -1565,3 +1565,11 @@ body {
 }
 
 @import "blog", "contact", "speaking";
+
+.text-page {
+    p {
+        margin-bottom: 20px;
+    }
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
