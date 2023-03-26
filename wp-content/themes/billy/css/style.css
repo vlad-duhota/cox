@@ -110,6 +110,9 @@ body {
 .text p:not(:last-child) {
   margin-bottom: 20px;
 }
+.text span {
+  color: #b70e0e;
+}
 
 .header {
   padding: 18px 0;

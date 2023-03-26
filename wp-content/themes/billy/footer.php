@@ -85,7 +85,7 @@
                         <div class="footer__copy">©2023 Billy Cox. All Rights Reserved </div>
                         <div class="footer__privacy">Privacy Policy
                             Terms оf use</div>
-                        <a href="#" class="footer__company">
+                        <a href="https://luxor.digital/" target="_blank" class="footer__company">
                             Designed and maintained by
                             <svg width="89" height="24" viewBox="0 0 89 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
